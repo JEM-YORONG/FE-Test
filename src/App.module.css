@@ -256,10 +256,31 @@
   touch-action: none;
 }
 
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 24px);
+  margin-bottom: 1px;
+  margin-top: 2px;
+}
+
+.searchInput {
+  padding-left: 12px;
+  width: 323px;
+  height: 32px;
+  border: 1px solid rgba(0, 166, 255, 1);
+  border-radius: 6px;
+}
+
+.searchInput:hover {
+  border: 1px solid rgba(0, 166, 255, 1);
+}
+
 .gamesContainer {
   width: calc(100% - 24px);
   height: 100%;
-  max-height: max-content;
+  max-height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

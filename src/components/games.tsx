@@ -9,23 +9,26 @@ import { ReactComponent as Azteca } from "../svg/body/games/azteca.svg";
 import { ReactComponent as Inca } from "../svg/body/games/inca.svg";
 import { ReactComponent as Maya } from "../svg/body/games/maya.svg";
 
-function Games({ category }: { category: string }) {
+function Games({ category, searchTerm }: { category: string, searchTerm: string }) {
   const gamesArray = [
     { name: "Sugar Rush", component: SugarRush, category: "new" },
-    { name: "Bad Wolf", component: BadWolf, category: "new" },
-    { name: "Doom of Egypt", component: DoomOfEgypt, category: "slots" },
-    { name: "Pirate", component: Pirate, category: "live" },
-    { name: "Beach", component: Beach, category: "jackpots" },
-    { name: "Xtreme", component: Xtreme, category: "tableGames" },
+    { name: "Big Bad Wolf", component: BadWolf, category: "new" },
+    { name: "Book of Egypt", component: DoomOfEgypt, category: "slots" },
+    { name: "Pirates Power", component: Pirate, category: "live" },
+    { name: "Beach Life", component: Beach, category: "jackpots" },
+    { name: "Crocodile Blitz Xtreme FB", component: Xtreme, category: "tableGames" },
     { name: "Azteca", component: Azteca, category: "bingo" },
-    { name: "Inca", component: Inca, category: "new" },
-    { name: "Maya", component: Maya, category: "other" },
+    { name: "Inca Jackpot", component: Inca, category: "new" },
+    { name: "Maya Jackpot", component: Maya, category: "other" },
   ];
 
   return (
     <div className={styles.gamesContainer}>
       {gamesArray
-        .filter(game => category === "start" || category === "" || game.category === category)
+        .filter(game => 
+          (category === "start" || category === "" || game.category === category) &&
+          game.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
         .map((game, index) => (
           <game.component key={index} className={styles.games} />
         ))}
