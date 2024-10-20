@@ -239,7 +239,7 @@
   justify-content: start;
   align-items: center;
   height: 82dvh;
-  max-height: max-content;
+  max-height: 82dvh;
   padding-top: calc(50px + 2dvh);
   padding-bottom: calc(58px + 2dvh);
   overflow: hidden;
@@ -257,17 +257,16 @@
 }
 
 .gamesContainer {
-  width: 100%;
+  width: calc(100% - 24px);
   height: 100%;
   max-height: max-content;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   overflow-y: auto;
-  margin-left: 12px;
-  margin-right: 12px;
-  padding-top: 6px;
+  margin: 0 12px;
+  padding: 6px 0 0 12px;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
 }
@@ -331,7 +330,7 @@
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .bodyContainer {
     overflow-y: auto;
     touch-action: pan-y;

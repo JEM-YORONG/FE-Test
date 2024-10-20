@@ -1,4 +1,5 @@
 import styles from "../../App.module.css";
+import { useState } from "react";
 import { ReactComponent as MainImg } from "../../svg/body/pic1.svg";
 import { ReactComponent as Bell } from "../../svg/body/bell.svg";
 import { ReactComponent as Line } from "../../svg/body/line.svg";
@@ -14,6 +15,12 @@ import { ReactComponent as Search } from "../../svg/body/nav/search.svg";
 import Games from "../games";
 
 function Body() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div className={styles.body}>
       <div className={styles.bodyContainer}>
@@ -31,41 +38,41 @@ function Body() {
           </div>
           <Line className={styles.lineC} />
           <div className={styles.category}>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("start")}>
               <Fire className={styles.fIcon} />
               <p>START</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("new")}>
               <New className={styles.fIcon} />
               <p>NEW</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("slots")} >
               <Slots className={styles.fIcon} />
               <p>SLOTS</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("live")}  >
               <Live className={styles.fIcon} />
               <p>LIVE</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("jackpots")}>
               <Jackpots className={styles.fIcon} />
               <p>JACKPOTS</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("tableGames")}>
               <TableGames className={styles.fIcon} />
               <p>TABLE GAMES</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("bingo")}>
               <Bingo className={styles.fIcon} />
               <p>BINGO</p>
             </div>
-            <div className={styles.groupC}>
+            <div className={styles.groupC} onClick={() => handleCategoryClick("other")}>
               <Others className={styles.fIcon} />
               <p>OTHERS</p>
             </div>
           </div>
         </div>
-        <Games />
+        <Games category={selectedCategory.toString()} />
       </div>
     </div>
   );

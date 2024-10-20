@@ -9,23 +9,26 @@ import { ReactComponent as Azteca } from "../svg/body/games/azteca.svg";
 import { ReactComponent as Inca } from "../svg/body/games/inca.svg";
 import { ReactComponent as Maya } from "../svg/body/games/maya.svg";
 
-function Games() {
+function Games({ category }: { category: string }) {
   const gamesArray = [
-    { name: "Sugar Rush", component: SugarRush },
-    { name: "Bad Wolf", component: BadWolf },
-    { name: "Doom of Egypt", component: DoomOfEgypt },
-    { name: "Pirate", component: Pirate },
-    { name: "Beach", component: Beach },
-    { name: "Xtreme", component: Xtreme },
-    { name: "Azteca", component: Azteca },
-    { name: "Inca", component: Inca },
-    { name: "Maya", component: Maya },
+    { name: "Sugar Rush", component: SugarRush, category: "new" },
+    { name: "Bad Wolf", component: BadWolf, category: "new" },
+    { name: "Doom of Egypt", component: DoomOfEgypt, category: "slots" },
+    { name: "Pirate", component: Pirate, category: "live" },
+    { name: "Beach", component: Beach, category: "jackpots" },
+    { name: "Xtreme", component: Xtreme, category: "tableGames" },
+    { name: "Azteca", component: Azteca, category: "bingo" },
+    { name: "Inca", component: Inca, category: "new" },
+    { name: "Maya", component: Maya, category: "other" },
   ];
+
   return (
     <div className={styles.gamesContainer}>
-      {gamesArray.map((game, index) => (
-        <game.component key={index} className={styles.games} />
-      ))}
+      {gamesArray
+        .filter(game => category === "start" || category === "" || game.category === category)
+        .map((game, index) => (
+          <game.component key={index} className={styles.games} />
+        ))}
     </div>
   );
 }
