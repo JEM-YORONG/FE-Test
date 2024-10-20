@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import styles from "../App.module.css";
 import { ReactComponent as SugarRush } from "../svg/body/games/sugarRush.svg";
 import { ReactComponent as BadWolf } from "../svg/body/games/badWolf.svg";
@@ -10,17 +11,33 @@ import { ReactComponent as Inca } from "../svg/body/games/inca.svg";
 import { ReactComponent as Maya } from "../svg/body/games/maya.svg";
 
 function Games({ category, searchTerm }: { category: string, searchTerm: string }) {
-  const gamesArray = [
-    { name: "Sugar Rush", component: SugarRush, category: "new" },
-    { name: "Big Bad Wolf", component: BadWolf, category: "new" },
-    { name: "Book of Egypt", component: DoomOfEgypt, category: "slots" },
-    { name: "Pirates Power", component: Pirate, category: "live" },
-    { name: "Beach Life", component: Beach, category: "jackpots" },
-    { name: "Crocodile Blitz Xtreme FB", component: Xtreme, category: "tableGames" },
-    { name: "Azteca", component: Azteca, category: "bingo" },
-    { name: "Inca Jackpot", component: Inca, category: "new" },
-    { name: "Maya Jackpot", component: Maya, category: "other" },
-  ];
+  const [gamesArray, setGamesArray] = useState<Array<{ name: string; component: React.ComponentType<any>; category: string }>>([]);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      const games = [
+        { name: "Sugar Rush", component: SugarRush, category: "new" },
+        { name: "Big Bad Wolf", component: BadWolf, category: "new" },
+        { name: "Book of Egypt", component: DoomOfEgypt, category: "slots" },
+        { name: "Pirates Power", component: Pirate, category: "live" },
+        { name: "Beach Life", component: Beach, category: "jackpots" },
+        { name: "Crocodile Blitz Xtreme FB", component: Xtreme, category: "tableGames" },
+        { name: "Azteca", component: Azteca, category: "bingo" },
+        { name: "Inca Jackpot", component: Inca, category: "new" },
+        { name: "Maya Jackpot", component: Maya, category: "other" },
+      ];
+
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(games);
+        }, 3000);
+      });
+
+      setGamesArray(games);
+    };
+
+    fetchGames();
+  }, []);
 
   return (
     <div className={styles.gamesContainer}>

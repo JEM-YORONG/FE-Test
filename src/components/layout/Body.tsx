@@ -35,6 +35,8 @@ function Body() {
       <div className={styles.bodyContainer}>
         <div className={styles.divImg}>
           <MainImg className={styles.mainImg} />
+          <MainImg className={styles.mainImg} />
+          <MainImg className={styles.mainImg} />
         </div>
         <div className={styles.announcement}>
           <Bell className={styles.bell} />
